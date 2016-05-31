@@ -1,0 +1,3 @@
+pancho-level-editor, as the name implies, is a companion tool to Pancho and the Cloak of a Million Colors. Unlike Pancho and the Cloak of a Million Colors, it is licensed under the GPL because it uses Qt.
+
+pancho-level-editor is intended to make it easier to create levels for Pancho and the Cloak of a Million Colors and can be built using the standard go install command.
