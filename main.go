@@ -5,12 +5,9 @@ import (
   "fmt"
   "os"
   "errors"
+  "pancho-level-editor/levelcontroller"
+  "pancho-level-editor/gameobject"
 )
-
-type Object struct {
-  Name, Type string
-  PosX, PosY, SizeX, SizeY int
-}
 
 func main() {
   err := qml.Run(run)
@@ -23,8 +20,8 @@ func main() {
 func run() error {
   engine := qml.NewEngine()
 
-  if len(os.Args) == 1 {
-    return errors.New("Needs qml filename to run!")
+  if len(os.Args) < 3 {
+    return errors.New("Needs qml and level filenames to run!")
   }
 
   component, err := engine.LoadFile(os.Args[1])
@@ -32,10 +29,21 @@ func run() error {
     return err
   }
 
+  f := levelcontroller.NewLevelController()
+  err = levelcontroller.Load(f, os.Args[2])
+  if err != nil {
+    return err
+  }
+
+  err = levelcontroller.Save(f, os.Args[3])
+  if err != nil {
+    return err
+  }
+
   context := engine.Context()
 
-  obj := Object{Name: "pancho", Type: "pancho"}
-  context.SetVar("object", &obj)
+  obj := gameobject.NewGameObject("pancho", "pancho")
+  context.SetVar("object", obj)
 
   win := component.CreateWindow(nil)
 

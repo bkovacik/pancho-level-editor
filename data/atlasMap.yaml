@@ -1,0 +1,98 @@
+sizeX: 194
+sizeY: 130
+none:
+  begX: 0
+  begY: 1
+  endX: 1
+  endY: 2
+
+black:
+  begX: 0
+  begY: 0
+  endX: 1
+  endY: 1
+
+white:
+  begX: 1
+  begY: 0
+  endX: 2
+  endY: 1
+
+red:
+  begX: 2
+  begY: 0
+  endX: 3
+  endY: 1
+
+orange:
+  begX: 3
+  begY: 0
+  endX: 4
+  endY: 1
+
+yellow:
+  begX: 4
+  begY: 0
+  endX: 5
+  endY: 1
+
+green:
+  begX: 5
+  begY: 0
+  endX: 6
+  endY: 1
+
+blue:
+  begX: 6
+  begY: 0
+  endX: 7
+  endY: 1
+
+indigo:
+  begX: 7
+  begY: 0
+  endX: 8
+  endY: 1
+
+violet:
+  begX: 8
+  begY: 0
+  endX: 9
+  endY: 1
+
+test:
+  begX: 0
+  begY: 0
+  endX: 32
+  endY: 32
+
+test3:
+  begX: 32
+  begY: 0
+  endX: 64
+  endY: 32
+
+background:
+  begX: 65
+  begY: 1
+  endX: 193
+  endY: 129
+
+lifefull:
+  begX: 0
+  begY: 32
+  endX: 32
+  endY: 64
+
+lifehalf:
+  begX: 32
+  begY: 32
+  endX: 64
+  endY: 64
+
+lifeempty:
+  begX: 0
+  begY: 64
+  endX: 32
+  endY: 96
+

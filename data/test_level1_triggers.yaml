@@ -1,0 +1,5 @@
+triggers:
+  - name:       pancho
+    triggerer:  trigger
+    triggeree:  trigger
+  

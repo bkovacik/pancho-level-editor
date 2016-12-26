@@ -1,3 +1,4 @@
+// REFACTOR DUPLICATE GROUPS INTO A CUSTOM OBJECT TO DRY THIS UP
 import QtQuick 2.5
 import QtQuick.Window 2.0
 import QtQuick.Layouts 1.1

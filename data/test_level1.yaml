@@ -1,0 +1,101 @@
+sizex: 1200
+sizey: 900
+orix: 0
+oriy: 0
+gravity: 600.0
+objects:
+  - name: pancho
+    type: pancho
+    posx: -16
+    posy: -16
+
+  - name: jumpthrough
+    type: jumpthrough
+    posx: -16
+    posy: 48
+
+  - name: crumble
+    type: crumble
+    posx: 48
+    posy: -80
+
+  - name: spikes
+    type: spikes
+    posx: 80
+    posy: -112
+
+  - name: ladder
+    type: ladder
+    posx: -48
+    posy: -16
+
+  - name: ladder1
+    type: ladder
+    posx: -48
+    posy: 16
+
+  - name: ladder2
+    type: ladder
+    posx: -48
+    posy: 48
+
+  - name: block
+    type: block
+    posx: -16
+    posy: -48
+
+  - name: block1
+    type: block
+    posx: -48
+    posy: -48
+
+  - name: block2
+    type: block
+    posx: 48
+    posy: -112
+
+  - name: block3
+    type: block
+    posx: 16
+    posy: -112
+
+  - name: block4
+    type: block
+    posx: 112
+    posy: 16
+
+  - name: block5
+    type: block
+    posx: 144
+    posy: -16
+
+  - name: block6
+    type: block
+    posx: 176
+    posy: -16
+
+  - name: block7
+    type: block
+    posx: 208
+    posy: -16
+
+  - name: block8
+    type: block
+    posx: 240
+    posy: -16
+
+  - name: block9
+    type: block
+    posx: 272
+    posy: 16
+
+  - name: blob
+    type: blob
+    posx: 144
+    posy: 16
+
+  - name: trigger
+    type: trigger
+    posx: -80
+    posy: -48
+
