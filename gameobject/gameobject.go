@@ -1,5 +1,9 @@
 package gameobject
 
+/*import (
+  "gopkg.in/qml.v1"
+)*/
+
 // change when we create object->sprite mapping
 const SIZE = 32
 

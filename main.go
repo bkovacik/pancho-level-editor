@@ -30,12 +30,12 @@ func run() error {
   }
 
   f := levelcontroller.NewLevelController()
-  err = levelcontroller.Load(f, os.Args[2])
+  err = f.Load(os.Args[2])
   if err != nil {
     return err
   }
 
-  err = levelcontroller.Save(f, os.Args[3])
+  err = f.Save(os.Args[3])
   if err != nil {
     return err
   }
@@ -43,7 +43,10 @@ func run() error {
   context := engine.Context()
 
   obj := gameobject.NewGameObject("pancho", "pancho")
+
   context.SetVar("object", obj)
+  context.SetVar("lc", f)
+  //context.SetVar("getNumObjects", levelcontroller.GetNumObjects)
 
   win := component.CreateWindow(nil)
 

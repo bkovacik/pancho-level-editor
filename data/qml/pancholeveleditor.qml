@@ -112,6 +112,26 @@ ApplicationWindow {
                 object.name = Name;
               } 
             }
+            Canvas {
+              id: canvas
+              anchors.fill: parent
+              Component.onCompleted: loadImage("../atlas.png")
+              onImageLoaded: requestPaint()
+              onPaint: drawView()
+
+              function drawView() {
+                var ctx = canvas.getContext('2d');
+                ctx.save();
+
+for (var i = 0; i < lc.objectsLength(); i++)
+                ctx.drawImage('../atlas.png',
+                  50, 50, 50, 50,
+                  lc.objectsG(i).posX,
+                  lc.objectsG(i).posY, 50, 50);
+
+                ctx.restore();
+              }
+            }
           }
         }
       }

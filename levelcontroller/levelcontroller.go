@@ -19,7 +19,7 @@ func NewLevelController() *LevelController {
   return lc
 }
 
-func Load(lc *LevelController, name string) (e error) {
+func (lc *LevelController) Load(name string) (e error) {
   fullpath, err := filepath.Abs(name)
   if err != nil {
     return err
@@ -60,7 +60,7 @@ func Load(lc *LevelController, name string) (e error) {
   return err
 }
 
-func Save(lc *LevelController, name string) (e error) {
+func (lc *LevelController) Save(name string) (e error) {
   fullpath, err := filepath.Abs(name)
   if err != nil {
     return err
@@ -92,4 +92,13 @@ func Save(lc *LevelController, name string) (e error) {
   }
 
   return err
+}
+
+//qml getters and setters
+func (lc *LevelController) ObjectsLength() (i int) {
+  return len(lc.Objects)
+}
+
+func (lc *LevelController) ObjectsG (i int) (g gameobject.GameObject) {
+  return lc.Objects[i]
 }
