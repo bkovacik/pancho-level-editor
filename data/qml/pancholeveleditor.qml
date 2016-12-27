@@ -96,8 +96,8 @@ ApplicationWindow {
         Rectangle {
           id: mapview
           color: "#555"
-          width: 600
-          height: 400
+          width: lc.sizeX
+          height: lc.sizeY
 
           MouseArea {
             anchors.fill: parent
@@ -123,11 +123,13 @@ ApplicationWindow {
                 var ctx = canvas.getContext('2d');
                 ctx.save();
 
-for (var i = 0; i < lc.objectsLength(); i++)
-                ctx.drawImage('../atlas.png',
-                  50, 50, 50, 50,
-                  lc.objectsG(i).posX,
-                  lc.objectsG(i).posY, 50, 50);
+                for (var i = 0; i < lc.objectsLength(); i++) {
+                  ctx.drawImage('../atlas.png',
+                    50, 50, 32, 32,
+                    lc.objectsG(i).posX+lc.sizeX/2,
+                    -lc.objectsG(i).posY+lc.sizeY/2, 32, 32);
+console.log(-lc.objectsG(i).posY+lc.sizeY/2)
+  }
 
                 ctx.restore();
               }
