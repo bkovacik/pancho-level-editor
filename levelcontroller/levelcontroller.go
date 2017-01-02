@@ -6,6 +6,9 @@ import (
   "path/filepath"
   "gopkg.in/yaml.v2"
   "pancho-level-editor/gameobject"
+  "pancho-level-editor/spriteobject"
+  "pancho-level-editor/atlasobject"
+//  "fmt"
 )
 
 type LevelController struct {
@@ -14,12 +17,30 @@ type LevelController struct {
   Objects []gameobject.GameObject
 }
 
+type SpriteContainer struct {
+  Sprites map[string]map[string]spriteobject.SpriteObject
+}
+
+type AtlasContainer struct {
+  SizeX, SizeY int
+  Sprites map[string]atlasobject.AtlasObject
+}
+
+type unmarshallable interface {
+  isUnmarshallable() bool
+}
+
+func (lc *LevelController) isUnmarshallable() bool { return true; }
+func (sc *SpriteContainer) isUnmarshallable() bool { return true; }
+func (ac *AtlasContainer)  isUnmarshallable() bool { return true; }
+
 func NewLevelController() *LevelController {
   lc := new(LevelController)
   return lc
 }
 
-func (lc *LevelController) Load(name string) (e error) {
+// reads in file of name unmarshalls to u
+func load(name string, u unmarshallable) (e error) {
   fullpath, err := filepath.Abs(name)
   if err != nil {
     return err
@@ -45,19 +66,53 @@ func (lc *LevelController) Load(name string) (e error) {
     }
     a += scanner.Text() + "\n"
   }
-  err = yaml.Unmarshal([]byte(a), lc);
+  err = yaml.Unmarshal([]byte(a), u);
   if err != nil {
     return err
   }
+
+  return nil
+}
+
+func (lc *LevelController) Load(name string, sname string, aname string) (e error) {
+  err := load(name, lc)
+  if err != nil {
+    return err
+  }
+
+  var sc SpriteContainer
+  err = load(sname, &sc)
+  if err != nil {
+    return err
+  }
+
+  var ac AtlasContainer
+  err = load(aname, &ac)
+  if err != nil {
+    return err
+  }
+
   // change this when object->sprite mapping created
   i := 0
   for i < len(lc.Objects) {
-    lc.Objects[i].SizeX = 32
-    lc.Objects[i].SizeY = 32
+    obj := &lc.Objects[i]
+
+    base := sc.Sprites[obj.Type]["base"]
+    if base.CusX != 0 {
+      obj.CusX = base.CusX
+      obj.CusY = base.CusY
+    }
+
+    aobj := ac.Sprites[base.Sprite]
+    obj.SpriteX = aobj.BegX
+    obj.SpriteY = aobj.BegY
+    obj.SizeX = aobj.EndX - aobj.BegX
+    obj.SizeY = aobj.EndY - aobj.BegY
+
     i++
   }
 
-  return err
+  return nil
 }
 
 func (lc *LevelController) Save(name string) (e error) {

@@ -20,7 +20,7 @@ func main() {
 func run() error {
   engine := qml.NewEngine()
 
-  if len(os.Args) < 3 {
+  if len(os.Args) < 4 {
     return errors.New("Needs qml and level filenames to run!")
   }
 
@@ -30,12 +30,12 @@ func run() error {
   }
 
   f := levelcontroller.NewLevelController()
-  err = f.Load(os.Args[2])
+  err = f.Load(os.Args[2], os.Args[3], os.Args[4])
   if err != nil {
     return err
   }
 
-  err = f.Save(os.Args[3])
+  err = f.Save(os.Args[5])
   if err != nil {
     return err
   }

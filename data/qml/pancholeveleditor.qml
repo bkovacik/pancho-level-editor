@@ -123,13 +123,55 @@ ApplicationWindow {
                 var ctx = canvas.getContext('2d');
                 ctx.save();
 
+                drawGrid(32, 4);
+
                 for (var i = 0; i < lc.objectsLength(); i++) {
-                  ctx.drawImage('../atlas.png',
-                    50, 50, 32, 32,
-                    lc.objectsG(i).posX+lc.sizeX/2,
-                    -lc.objectsG(i).posY+lc.sizeY/2, 32, 32);
-console.log(-lc.objectsG(i).posY+lc.sizeY/2)
-  }
+                  var objI = lc.objectsG(i);
+                  ctx.drawImage(
+                    '../atlas.png',
+                    objI.spriteX,
+                    objI.spriteY,
+                    objI.sizeX,
+                    objI.sizeY,
+                    objI.posX+lc.sizeX/2,
+                    -objI.posY+lc.sizeY/2,
+                    objI.cusX,
+                    objI.cusY
+                  );
+                }
+
+                ctx.restore();
+              }
+
+              function drawGrid(space, dashlength) {
+                var ctx = canvas.getContext('2d');
+                var offX = (lc.sizeY/2)%space - space;
+                var offY = (lc.sizeX/2)%space - space;
+                ctx.save();
+
+                ctx.beginPath();
+
+                // horizontal
+                for (var i = offX; i < lc.sizeY; i += space) {
+                  ctx.moveTo(0, i);
+
+                  for (var j = dashlength; j < lc.sizeX; j += dashlength*2) {
+                    ctx.lineTo(j, i);
+                    ctx.moveTo(j+dashlength, i);
+                  }
+                }
+
+                // vertical
+                for (var i = offY; i < lc.sizeX; i += space) {
+                  ctx.moveTo(i, 0);
+
+                  for (var j = dashlength; j < lc.sizeY; j += dashlength*2) {
+                    ctx.lineTo(i, j);
+                    ctx.moveTo(i, j+dashlength);
+                  }
+                }
+
+                ctx.stroke();
 
                 ctx.restore();
               }

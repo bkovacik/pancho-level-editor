@@ -10,6 +10,14 @@ const SIZE = 32
 type GameObject struct {
   Name, Type string
   PosX, PosY int
+
+  // CusX is size on screen
+  CusX int `yaml:"-"`
+  CusY int `yaml:"-"`
+
+  // SpriteX is position grabbed from Atlas
+  SpriteX int `yaml:"-"`
+  SpriteY int `yaml:"-"`
   SizeX int `yaml:"-"`
   SizeY int `yaml:"-"`
 }

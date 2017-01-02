@@ -1,0 +1,49 @@
+sprites:
+  pancho:
+    base:
+      sprite: red  
+      cusx: 32
+      cusy: 32
+
+  jumpthrough:
+    base:
+      sprite: violet
+      cusx: 32
+      cusy: 32
+
+  crumble:
+    base:
+      sprite: blue
+      cusx: 32
+      cusy: 32
+  spikes:
+    base:
+      sprite: red
+      cusx: 32
+      cusy: 32
+
+  ladder:
+    base:
+      sprite: yellow
+      cusx: 32
+      cusy: 32
+    
+  block:
+    base:
+      sprite: blue
+      cusx: 32
+      cusy: 32
+
+  blob:
+    base:
+      sprite: red
+      cusx: 32
+      cusy: 32
+
+  trigger:
+    base:
+      sprite: indigo
+      cusx: 32
+      cusy: 32
+
+    
